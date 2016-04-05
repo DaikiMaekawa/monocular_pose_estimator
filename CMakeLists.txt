@@ -72,6 +72,11 @@ install(TARGETS monocular_pose_estimator monocular_pose_estimator_nodelet
     RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
+install(DIRECTORY launch marker_positions
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
 install(FILES monocular_pose_estimator_nodelet.xml
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
+

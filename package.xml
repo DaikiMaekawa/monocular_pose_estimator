@@ -1,6 +1,6 @@
 <package>
   <name>monocular_pose_estimator</name>
-  <version>2.0.1</version>
+  <version>2.0.2</version>
   <description>
      monocular_pose_estimator
   </description>
@@ -31,6 +31,5 @@
   <export>
     <nodelet plugin="${prefix}/monocular_pose_estimator_nodelet.xml"/>
   </export>
-
 
 </package>
