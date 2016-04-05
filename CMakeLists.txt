@@ -66,7 +66,7 @@ target_link_libraries(monocular_pose_estimator_nodelet
    ${OpenCV_LIBRARIES}
  )
 
-install(TARGETS monocular_pose_estimator
+install(TARGETS monocular_pose_estimator monocular_pose_estimator_nodelet
     ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
     LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
     RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
