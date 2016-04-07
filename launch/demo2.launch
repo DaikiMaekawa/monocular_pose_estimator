@@ -2,20 +2,20 @@
 
 	<!-- Name of the YAML file containing the marker positions -->
 	<!--arg name="YAML_file_name" default="demo2"/-->
-    <arg name="YAML_file_name" default="demo_marker_positions"/>
+    <arg name="YAML_file_name" default="demo_marker_positions2"/>
 
 	<!-- File containing the the marker positions in the trackable's frame of reference -->
 	<arg name="marker_positions_file" default="$(find monocular_pose_estimator)/marker_positions/$(arg YAML_file_name).yaml"/> 
 
 	<group ns="monocular_pose_estimator" >
+        <!--node name="monocular_pose_estimator" pkg="monocular_pose_estimator" type="monocular_pose_estimator" respawn="false" output="screen"-->
         <node name="monocular_pose_estimator" pkg="monocular_pose_estimator" type="monocular_pose_estimator" respawn="false" output="screen">
-        <!--node name="monocular_pose_estimator" pkg="monocular_pose_estimator" type="monocular_pose_estimator" respawn="false" output="screen" launch-prefix="xterm -e lldb-3.6"-->
 
             <rosparam command="load" file="$(arg marker_positions_file)"/>
-			<param name= "threshold_value" value = "140" />
-			<param name= "gaussian_sigma" value = "0.6" />
-			<param name= "min_blob_area" value = "10" />
-			<param name= "max_blob_area" value = "200" />
+			<param name= "threshold_value" value = "230" />
+			<param name= "gaussian_sigma" value = "0.3" />
+			<param name= "min_blob_area" value = "1" />
+			<param name= "max_blob_area" value = "600" />
 			<param name= "max_width_height_distortion" value = "0.5" />
 			<param name= "max_circular_distortion" value = "0.5" />
 			<param name= "back_projection_pixel_tolerance" value = "5" />
@@ -25,7 +25,7 @@
 			<param name= "roi_border_thickness" value="20" />
 		</node>
 	
-		<node name="view_visualisation_image" pkg="image_view" type="image_view" args="image:=/monocular_pose_estimator/image_with_detections" />
+		<!--node name="view_visualisation_image" pkg="image_view" type="image_view" args="image:=/monocular_pose_estimator/image_with_detections" /-->
 	</group>
 	
 	<!--node pkg="cv_camera" type="cv_camera_node" name="cv_camera">
@@ -35,7 +35,7 @@
 		<remap from="/cv_camera/camera_info" to="/camera/camera_info"/>
     </node-->
 
-    <node name="simple_image_publisher" pkg="simple_image_publisher" type="image_publisher" args="$(find simple_image_publisher)/images/test3.jpg" output="screen">
+    <node name="simple_image_publisher" pkg="simple_image_publisher" type="image_publisher" args="/home/daikimaekawa/samples_1280x720/left0000.jpg" output="screen">
         <remap from="/camera/image" to="/camera/image_raw"/>
     </node>
 
