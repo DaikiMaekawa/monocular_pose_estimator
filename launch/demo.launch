@@ -22,7 +22,7 @@
       		<param name= "roi_border_thickness" value="20" />
 		</node>
 	
-		<node name="view_visualisation_image" pkg="image_view" type="image_view" args="image:=/monocular_pose_estimator/image_with_detections" />
+		<!--node name="view_visualisation_image" pkg="image_view" type="image_view" args="image:=/monocular_pose_estimator/image_with_detections" /-->
 	</group>
 
 	<!-- rosbag play -->
