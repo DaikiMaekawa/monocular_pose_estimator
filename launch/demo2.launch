@@ -24,13 +24,15 @@
         <node name="monocular_pose_estimator_nodelet" pkg="nodelet" type="nodelet" respawn="false" output="screen" args="load monocular_pose_estimator/MPENodelet mpe_nodelet_manager">
 
             <rosparam command="load" file="$(arg marker_positions_file)"/>
+            <remap from="/camera/image_raw" to="/monocular_pose_estimator/camera/image"/>
+            <remap from="/camera/camera_info" to="/monocular_pose_estimator/camera/camera_info"/>
+        </node>
+
+        <node name="simple_image_publisher_nodelet" pkg="nodelet" type="nodelet" output="screen" args="load simple_image_publisher/ImagePublisherNodelet mpe_nodelet_manager">
+            <remap from="/camera/image" to="/camera/image_raw"/>
+            <param name="camera_info_url" value="file://$(find simple_image_publisher)/config/default_camera.yaml"/>
+            <param name="image_file" value="$(find simple_image_publisher)/images/320x240.jpg"/>
+            <param name="update_rate" value="5"/>
         </node>
     </group>
-    
-    <node name="simple_image_publisher" pkg="simple_image_publisher" type="image_publisher" output="screen">
-        <remap from="/camera/image" to="/camera/image_raw"/>
-        <param name="camera_info_url" value="file://$(find simple_image_publisher)/config/default_camera.yaml"/>
-        <param name="image_file" value="$(find simple_image_publisher)/images/320x240.jpg"/>
-        <param name="update_rate" value="5"/>
-    </node>
 </launch>
